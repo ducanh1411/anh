@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b46">
+  <meta name="description" content="Material Master ERP Training - Quản lý dữ liệu chủ vật tư">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <title>Material Master | ERP Training</title>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">VH</div>
+      <div><strong>MATERIAL<span>MASTER</span></strong><small>ERP TRAINING</small></div>
+    </div>
+    <div class="side-caption">KHÔNG GIAN LÀM VIỆC</div>
+    <nav class="nav">
+      <button class="nav-link active" data-page="overview"><span class="nav-icon">▦</span>Tổng quan</button>
+      <button class="nav-link" data-page="catalog"><span class="nav-icon">▤</span>Danh mục vật tư</button>
+      <button class="nav-link" data-page="create"><span class="nav-icon">＋</span>Tạo mã mới</button>
+      <button class="nav-link" data-page="guide"><span class="nav-icon">ⓘ</span>Hướng dẫn</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-note"><span class="note-dot"></span><div><b>Không gian đào tạo</b><small>Dữ liệu minh họa, không dùng cho sản xuất</small></div></div>
+      <div class="user-mini"><div class="avatar">HV</div><div><b>Học viên</b><small>Material Master User</small></div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="icon-btn mobile-menu" id="mobileMenu" aria-label="Mở menu">☰</button>
+        <div><div class="eyebrow">ENTERPRISE RESOURCE PLANNING</div><div class="top-title">Material Master <span class="version-tag">TRAINING</span></div></div>
+      </div>
+      <div class="top-actions">
+        <div class="connection" id="connection"><i class="status-dot"></i><span>Đang kiểm tra kết nối</span></div>
+        <button class="btn btn-light btn-sync" id="syncBtn"><span>↻</span> Đồng bộ</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="page active" id="page-overview">
+        <div class="page-heading">
+          <div><div class="eyebrow">WORKSPACE / OVERVIEW</div><h1>Tổng quan</h1><p>Theo dõi dữ liệu chủ vật tư và tình trạng hệ thống.</p></div>
+          <button class="btn btn-primary" data-go="create">＋ Tạo vật tư mới</button>
+        </div>
+        <div class="banner">
+          <div class="banner-icon">▦</div><div><b>Chào mừng đến với Material Master</b><p>Chuẩn hóa thông tin vật tư ngay từ đầu – kiểm soát trùng lặp – cấp mã thống nhất.</p></div>
+          <span class="banner-pill">ERP TRAINING</span>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Tổng mã vật tư</span><span class="stat-icon blue">▤</span></div><strong id="statTotal">0</strong><small><i class="tiny-dot blue-dot"></i> Trong danh mục hiện tại</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Nhóm vật tư</span><span class="stat-icon purple">◇</span></div><strong id="statGroups">4</strong><small>Thép · Cao su · Tấm trượt · Bu lông</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Mã tạo gần đây</span><span class="stat-icon green">↗</span></div><strong id="statRecent">0</strong><small>Phát sinh trong 7 ngày gần nhất</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Trạng thái dữ liệu</span><span class="stat-icon amber">◎</span></div><strong class="stat-word" id="statState">Demo</strong><small id="statStateHint">Chưa kết nối Google Sheets</small></article>
+        </div>
+        <div class="section-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Phân bổ theo nhóm</h2><p>Số lượng mã trong từng nhóm vật tư</p></div><span class="panel-kicker">MATERIAL GROUPS</span></div>
+            <div id="groupBars" class="group-bars"></div>
+          </article>
+          <article class="panel process-panel">
+            <div class="panel-heading"><div><h2>Quy trình tạo mã</h2><p>4 bước kiểm soát dữ liệu</p></div></div>
+            <div class="process-list">
+              <div class="process-step"><span>01</span><div><b>Chọn nhóm & chủng loại</b><small>Xác định đúng bản chất vật tư</small></div></div>
+              <div class="process-step"><span>02</span><div><b>Khai báo thông số</b><small>Nhập thuộc tính kỹ thuật cần thiết</small></div></div>
+              <div class="process-step"><span>03</span><div><b>Kiểm tra trùng lặp</b><small>Đối chiếu thuộc tính nhận dạng</small></div></div>
+              <div class="process-step"><span>04</span><div><b>GAS cấp mã vật tư</b><small>Server kiểm tra và cấp mã duy nhất</small></div></div>
+            </div>
+          </article>
+        </div>
+        <article class="panel recent-panel">
+          <div class="panel-heading"><div><h2>Vật tư mới cập nhật</h2><p>Các bản ghi mới nhất trong danh mục</p></div><button class="text-btn" data-go="catalog">Xem danh mục →</button></div>
+          <div class="table-wrap"><table><thead><tr><th>MÃ VẬT TƯ</th><th>TÊN VẬT TƯ</th><th>NHÓM</th><th>NGÀY TẠO</th><th>TRẠNG THÁI</th></tr></thead><tbody id="recentRows"></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-catalog">
+        <div class="page-heading"><div><div class="eyebrow">MASTER DATA / MATERIALS</div><h1>Danh mục vật tư</h1><p>Tra cứu, lọc và xem chi tiết dữ liệu chủ vật tư.</p></div><button class="btn btn-primary" data-go="create">＋ Tạo vật tư mới</button></div>
+        <div class="panel catalog-panel">
+          <div class="catalog-toolbar">
+            <div class="search-box"><span>⌕</span><input id="searchInput" placeholder="Tìm theo mã hoặc tên vật tư..." autocomplete="off"></div>
+            <select id="groupFilter" class="filter-select"><option value="">Tất cả nhóm vật tư</option></select>
+            <select id="statusFilter" class="filter-select"><option value="">Tất cả trạng thái</option><option value="ACTIVE">Đang sử dụng</option><option value="INACTIVE">Ngừng sử dụng</option></select>
+            <button class="btn btn-light" id="clearFilters">Xóa lọc</button>
+          </div>
+          <div class="table-meta"><span id="catalogCount">0 vật tư</span><span>Dữ liệu được đồng bộ từ nguồn hiện tại</span></div>
+          <div class="table-wrap"><table><thead><tr><th>MÃ VẬT TƯ</th><th>TÊN VẬT TƯ</th><th>NHÓM</th><th>ĐƠN VỊ</th><th>NGUỒN MÃ</th><th>TRẠNG THÁI</th></tr></thead><tbody id="catalogRows"></tbody></table></div>
+          <div class="pagination"><span id="pageInfo">Trang 1</span><div><button class="page-btn" id="prevPage">←</button><button class="page-btn" id="nextPage">→</button></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-create">
+        <div class="page-heading"><div><div class="eyebrow">MASTER DATA / CREATE</div><h1>Tạo mã vật tư mới</h1><p>Khai báo thuộc tính kỹ thuật để hệ thống tự sinh tên và kiểm tra trùng.</p></div><span class="step-chip">NEW MATERIAL REQUEST</span></div>
+        <div class="create-layout">
+          <div class="panel form-panel">
+            <div class="form-section">
+              <div class="form-section-title"><span class="section-number">01</span><div><h2>Thông tin phân loại</h2><p>Chọn nhóm và chủng loại vật tư</p></div></div>
+              <div class="field-grid">
+                <label class="field"><span>Nhóm vật tư <em>*</em></span><select id="categorySelect"></select></label>
+                <label class="field"><span>Chủng loại <em>*</em></span><select id="subtypeSelect"></select></label>
+                <label class="field"><span>Loại vật tư <em>*</em></span><select id="materialTypeSelect"></select></label>
+                <label class="field"><span>Người khai báo</span><input id="actorName" maxlength="60" placeholder="Ví dụ: Học viên 01"></label>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="form-section-title"><span class="section-number">02</span><div><h2>Thông số kỹ thuật</h2><p>Các trường dữ liệu thay đổi theo chủng loại</p></div></div>
+              <div id="dynamicFields" class="field-grid"></div>
+              <div class="hint-box" id="schemaHint">Chọn chủng loại để hiển thị thông số tương ứng.</div>
+              <label class="field full-field"><span>Ghi chú</span><textarea id="notes" rows="2" maxlength="500" placeholder="Thông tin bổ sung (không dùng để xác định trùng lặp)"></textarea></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-light" id="resetForm">Làm mới biểu mẫu</button><button class="btn btn-primary btn-create" id="createBtn" disabled>Kiểm tra thông tin trước</button></div>
+          </div>
+          <aside class="preview-column">
+            <div class="panel preview-panel">
+              <div class="preview-head"><span class="preview-label">MATERIAL PREVIEW</span><span class="live-indicator">● LIVE</span></div>
+              <div class="preview-symbol">▧</div><div class="preview-caption">TÊN VẬT TƯ TỰ ĐỘNG</div><h3 id="namePreview">Chưa đủ thông tin</h3>
+              <div class="preview-divider"></div><div class="preview-data"><span>Nhóm</span><b id="previewCategory">—</b></div><div class="preview-data"><span>Chủng loại</span><b id="previewSubtype">—</b></div><div class="preview-data"><span>Đơn vị</span><b id="previewUnit">—</b></div>
+              <div class="code-placeholder"><small>MÃ VẬT TƯ</small><b>Được cấp bởi GAS</b><span>Không nhập mã thủ công</span></div>
+            </div>
+            <div class="panel duplicate-panel">
+              <div class="duplicate-title"><span>◎</span><div><b>Kết quả đối chiếu</b><small>Kiểm tra trên danh mục đã tải</small></div></div>
+              <div id="duplicateStatus" class="duplicate-state neutral"><span class="state-icon">…</span><div><b>Chưa kiểm tra</b><small>Nhập thông số để bắt đầu đối chiếu.</small></div></div>
+              <div id="duplicateList" class="duplicate-list"></div>
+            </div>
+            <div class="secure-note"><span>♢</span><p><b>Kiểm soát dữ liệu</b><br>Frontend chỉ kiểm tra sơ bộ. GAS sẽ kiểm tra lại dữ liệu mới nhất trước khi cấp mã.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-guide">
+        <div class="page-heading"><div><div class="eyebrow">DOCUMENTATION / QUICK START</div><h1>Hướng dẫn sử dụng</h1><p>Các bước vận hành và cấu hình kết nối cho môi trường đào tạo.</p></div></div>
+        <div class="guide-grid">
+          <article class="panel guide-card"><span class="guide-number">01</span><h2>Thiết lập Google Sheets</h2><p>Tạo một Google Sheets mới do bạn sở hữu. Mở Extensions → Apps Script, dán nội dung file <code>gas/Code.gs</code> và chạy hàm <code>setup()</code>.</p></article>
+          <article class="panel guide-card"><span class="guide-number">02</span><h2>Triển khai GAS</h2><p>Deploy → New deployment → Web app. Chỉ dùng dữ liệu đào tạo không nhạy cảm. Sao chép URL kết thúc bằng <code>/exec</code>.</p></article>
+          <article class="panel guide-card"><span class="guide-number">03</span><h2>Kết nối ứng dụng</h2><p>Mở <code>assets/js/cloud-bridge.js</code>, thay <code>GAS_EXEC_URL</code> bằng URL vừa triển khai. Tải lại ứng dụng để kiểm tra trạng thái.</p></article>
+          <article class="panel guide-card"><span class="guide-number">04</span><h2>Chạy thử an toàn</h2><p>Khi chưa có GAS, app dùng demo cục bộ và ghi rõ trạng thái. Không đưa dữ liệu nội bộ, giá mua, thông tin nhân sự hoặc bí mật công ty vào bản public.</p></article>
+        </div>
+        <div class="panel warning-panel"><b>⚠ Lưu ý bảo mật quan trọng</b><p>Đây là ứng dụng đào tạo công khai, không có đăng nhập. URL GAS có thể được xem từ trình duyệt. Không sử dụng với dữ liệu ERP sản xuất thật. Khi kết thúc đào tạo, hãy tắt chế độ tạo mới trong GAS.</p></div>
+      </section>
+    </div>
+    <footer class="footer"><span>© 2026 MATERIAL MASTER · ERP TRAINING</span><span>MASTER DATA MANAGEMENT <b>•</b> DEMO ENVIRONMENT</span></footer>
+  </main>
+</div>
+
+<div class="toast-region" id="toastRegion" aria-live="polite"></div>
+<div class="modal-backdrop" id="detailModal">
+  <div class="modal">
+    <div class="modal-head"><div><span class="eyebrow">MATERIAL MASTER / DETAIL</span><h2>Chi tiết vật tư</h2></div><button class="icon-btn" data-close-modal>✕</button></div>
+    <div id="detailContent"></div>
+    <div class="modal-actions"><button class="btn btn-light" data-close-modal>Đóng</button><button class="btn btn-primary" id="printLabelBtn">In nhãn / mã vạch</button></div>
+  </div>
+</div>
+<div class="modal-backdrop" id="barcodeModal">
+  <div class="modal barcode-modal"><div class="modal-head"><div><span class="eyebrow">BARCODE / CODE 128</span><h2>Nhãn mã vật tư</h2></div><button class="icon-btn" data-close-barcode>✕</button></div><div id="barcodeContent"></div><div class="modal-actions"><button class="btn btn-light" data-close-barcode>Đóng</button><button class="btn btn-light" id="downloadSvgBtn">Tải SVG</button><button class="btn btn-primary" id="printBarcodeBtn">In nhãn</button></div></div>
+</div>
+<script src="./assets/js/material-rules.js"></script>
+<script src="./assets/js/barcode.js"></script>
+<script src="./assets/js/cloud-bridge.js"></script>
+<script src="./assets/js/app.js"></script>
+</body>
+</html>

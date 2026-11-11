@@ -1,0 +1,15 @@
+{
+  "name": "Material Master ERP Training",
+  "short_name": "Material Master",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f7fa",
+  "theme_color": "#102b46",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
